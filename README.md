@@ -8,6 +8,8 @@ Perform SQL queries on DVD rental store database to determine inventory needs by
 5. created procedure to refresh both tables
 
 ### Files
-- dvdrental.zip\t\t\tdatabase
-- ER-diagram.pdf\t\t\tEn/t/ttity Relationship diagram
-- SQL-queries      /t       
+- SQL-queries (analysis)
+- dvdrental.zip (database)
+- ER-diagram.pdf (Enttity Relationship diagram)
+- 
+
