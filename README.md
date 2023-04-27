@@ -1,4 +1,4 @@
-# SQL-DVD-Genre-Sales-Analysis
+# SQL DVD Genre Sales Analysis
 Project to perform SQL queries on a DVD rental store database to determine inventory needs.
 
 1. created two tables (detailed and summary)
