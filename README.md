@@ -9,10 +9,12 @@ Perform SQL queries on DVD rental store database to determine inventory needs by
 
 ### Files
 - SQL-queries (analysis)
-- dvdrental.zip (database)
 - ER-diagram.pdf (Enttity Relationship diagram)
+- dvdrental.zip (database)
+- SQL-project.pdf (contains pictures)
 
-
+Database and ER diagram are from: 
+https://www.postgresqltutorial.com/postgresql-getting-started/postgresql-sample-database/
 
 ### Advanced Data Management
 
