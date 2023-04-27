@@ -9,7 +9,7 @@ Perform SQL queries on DVD rental store database to determine inventory needs by
 
 ### Files
 - SQL-queries (analysis)
-- ER-diagram.pdf (Enttity Relationship diagram)
+- ER-diagram.pdf (Entity Relationship diagram)
 - dvdrental.zip (database)
 - SQL-project.pdf (contains pictures)
 
