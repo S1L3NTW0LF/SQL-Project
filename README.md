@@ -7,3 +7,7 @@ Perform SQL queries on DVD rental store database to determine inventory needs by
 4. created function and trigger to automatically update detailed upon data entry
 5. created procedure to refresh both tables
 
+### Files
+- dvdrental.zip           database
+- ER-diagram.pdf          Entity Relationship diagram
+- SQL-queries             
