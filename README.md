@@ -1,4 +1,4 @@
-# SQL | DVD Genre Sales Analysis
+# DVD Genre Sales Analysis
 Perform SQL queries on DVD rental store database to determine inventory needs by popular genre.
 
 1. created two tables (detailed and summary)
