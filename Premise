@@ -38,3 +38,10 @@ The stored procedure can be run automatically on a schedule every month by using
 “Linux crontab is a program that allows tasks to automatically run in the background.” (Dias) “Agent pgAgent is a job scheduling agent available for
 PostgreSQL that allows the execution of stored procedures, SQL statements, and shell scripts.” (Dias) “The pg_cron extension performs the same function as 
 the other two but runs inside the database as an extension.” (Dias)
+
+Malik, Upom, et al. SQL for Data Analytics : Perform Fast and Efficient Data Analysis with the Power 
+of SQL, Packt Publishing, Limited, 2019. ProQuest Ebook Central, 
+https://ebookcentral.proquest.com/lib/westerngovernors-ebooks/detail.action?docID=5888693. 
+
+Dias, Hugo. “An Overview of Job Scheduling Tools for PostgreSQL.” Severalnines, 3 Feb. 2020, 
+severalnines.com/database-blog/overview-job-scheduling-tools-postgresql.
