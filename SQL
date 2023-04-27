@@ -1,0 +1,124 @@
+-- Section B starts here
+
+CREATE TABLE summary(
+	genre char(30), 
+	times_rented int
+);
+
+CREATE TABLE detailed(
+	rental_id int, 
+	genre char(30),
+	rental_date timestamp
+);
+
+-- Section C starts here
+
+INSERT INTO detailed
+SELECT rental_id, category.name, rental_date
+FROM rental
+INNER JOIN inventory ON rental.inventory_id = inventory.inventory_id
+INNER JOIN film_category ON inventory.film_id = film_category.film_id
+INNER JOIN category ON film_category.category_id = category.category_id
+
+INSERT INTO summary 
+SELECT genre, count(genre)
+FROM detailed 
+GROUP BY genre
+
+SELECT * FROM detailed
+
+SELECT * FROM rental_id, rental_date, FROM rental
+SELECT * FROM category
+
+SELECT name 
+FROM rental
+INNER JOIN inventory ON rental.inventory_id = inventory.inventory_id
+INNER JOIN film_category ON inventory.film_id = film_category.film_id
+INNER JOIN category ON film_category.category_id = category.category_id	
+WHERE rental_id = 2
+
+-- Section D starts here 
+
+CREATE OR REPLACE FUNCTION fixdate()
+RETURNS void
+LANGUAGE plpgsql AS 
+$$
+BEGIN
+	UPDATE detailed
+	SET rental_date = DATE_TRUNC('DAY', rental_date);
+END; 
+$$
+
+SELECT fixdate()
+
+SELECT * FROM detailed
+
+-- Section E starts here
+
+CREATE FUNCTION summary_trigger()
+RETURNS trigger
+LANGUAGE plpgsql
+AS
+$$ 
+BEGIN
+	UPDATE summary 
+	SET times_rented = times_rented + 1
+	WHERE genre = NEW.genre; 
+	RETURN NEW; 
+END; 
+$$
+
+CREATE TRIGGER summary_trigger
+AFTER INSERT
+ON detailed
+FOR EACH ROW
+EXECUTE PROCEDURE summary_trigger();
+
+SELECT * FROM summary
+SELECT * FROM detailed
+
+INSERT INTO detailed
+SELECT rental_id, category.name, rental_date
+FROM rental
+INNER JOIN inventory ON rental.inventory_id = inventory.inventory_id
+INNER JOIN film_category ON inventory.film_id = film_category.film_id
+INNER JOIN category ON film_category.category_id = category.category_id
+
+TRUNCATE TABLE summary
+TRUNCATE TABLE detailed
+
+INSERT INTO summary 
+SELECT genre, count(genre)
+FROM detailed 
+GROUP BY genre
+
+-- Section F starts here
+
+CREATE PROCEDURE update_report()
+LANGUAGE plpgsql AS
+$$
+BEGIN
+	TRUNCATE TABLE detailed; 
+	TRUNCATE TABLE summary; 
+	
+	INSERT INTO detailed
+	SELECT rental_id, name, rental_date
+	FROM rental
+	INNER JOIN inventory ON rental.inventory_id = inventory.inventory_id
+	INNER JOIN film_category ON inventory.film_id = film_category.film_id
+	INNER JOIN category ON film_category.category_id = category.category_id;
+	
+	
+	INSERT INTO summary 
+	SELECT genre, count(genre)
+	FROM detailed 
+	GROUP BY genre; 
+	
+	COMMIT; 
+END; 
+$$
+
+-- The stored procedure should be run every month or anytime that the DVD rental store 
+-- is restocking their inventory before and after.
+
+CALL update_report()
